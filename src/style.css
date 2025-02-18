@@ -3,3 +3,79 @@
     padding: 0;
 }
 
+/* --------------------------------- SELECTORS --------------------------------- */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+    grid-template-rows: 1fr 9fr;
+    column-gap: 1px;
+    width: 1320px;
+    height: 720px;
+    background: black;
+}
+
+/* --------------------------------- HEADER --------------------------------- */
+.header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    background: pink;
+    font-size: 36px;
+}
+
+/* --------------------------------- SIDEBAR --------------------------------- */
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+    width: 100%;
+    height: 100%;
+    background: beige;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px 5px 20px;
+}
+
+.count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    border-radius: 50px;
+    height: 20px;
+    width: 20px;
+}
+
+.new-todo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    border-radius: 50px;
+    height: 60px;
+    width: 60px;
+}
+
+/* --------------------------------- MAIN SCREENN --------------------------------- */
+.content {
+    grid-column: 2 / 3;
+    grid-row: 2 / 4;
+    width: 100%;
+    height: 100%;
+    background: blanchedalmond;
+}
