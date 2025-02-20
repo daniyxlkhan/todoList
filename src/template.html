@@ -8,30 +8,30 @@
 <body>
     <section class="container">
         <header class="header">
-            <p class="header-title">TO-DO</p>
+            <span class="header-title">TO-DO</span>
         </header>
         <nav class="sidebar">
             <ul class="nav">
-                <li class="nav-item">
-                    <p class="project-name">Home</p>
+                <li class="nav-item home">
+                    <span class="project-name">Home</span>
                     <div class="home-count count">0</div>
                 </li>
 
-                <li class="nav-item">
-                    <p class="project-name">Today</p>
+                <li class="nav-item today">
+                    <span class="project-name">Today</span>
                     <div class="today-count count">0</div>
                 </li>
 
-                <li class="nav-item">
-                    <p class="project-name">Week</p>
+                <li class="nav-item week">
+                    <span class="project-name">Week</span>
                     <div class="week-count count">0</div>
                 </li>
 
                 <li class="nav-item">
-                    <p class="nav-item-project-title">Projects</p>
+                    <span class="nav-item-project-title">Projects</span>
                     <ul class="projects">
                         <li class="project-item">
-                            <p class="project"></p>
+                            <span class="project"></span>
                         </li>
                         <li class="project-item">
                             
@@ -40,45 +40,86 @@
                 </li>
 
                 <li class="nav-item">
-                    <p class="today">Notes</p>
+                    <span class="today">Notes</span>
                 </li>
             </ul>
-              
+
 
             <button class="new-todo">
                 +
             </button>
         </nav>
         <div class="content">
-                
+            <div class="task">
+                <div class="task-check">
+                    <input type="checkbox">
+                    <span class="title">Title</span>
+                </div>
+
+                <div class="task-options">
+                    <button class="task-details">Details</button>
+                    <span class="task-date">Dec 11th</span>
+                    <img src="./assets/delete-icon.svg" width="30" height="30">
+                </div>
+            </div>
         </div>
     </section>
 
     <dialog>
         <section class="form-container">
             <header class="form-header">
-                <p class="form-header-title">Create a new...</p>
+                <span class="form-header-title">Create a new...</span>
                 <button class="close-button">x</button>
             </header>
             <nav class="form-sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <p class="project-name">To Do</p>
+                        <span class="project-name">To Do</span>
                     </li>
     
                     <li class="nav-item">
-                        <p class="project-name">Project</p>
+                        <span class="project-name">Project</span>
                     </li>
     
                     <li class="nav-item">
-                        <p class="project-name">Note</p>
+                        <span class="project-name">Note</span>
                     </li>
                 </ul>
             </nav>
             <div class="content">
-                <form method="dialog">
-                    
-                </form>
+                <div class="make-todo">
+                    <form id="todo-submit-form">
+                        <label for="title">
+                            <input name="title" placeholder="Title: Do groceries" id="title">
+                        </label>
+                        <label for="details">
+                            <input name="details" placeholder="Details: eg internet, rent, phone" id="details">
+                        </label>
+                        <label for="date">
+                            <input type="date" id="date">
+                        </label>
+
+                        <div class="priority">
+                            <p>Priority:</p>
+                            <label class="radio-btn">
+                                <input type="radio" name="priority" value="low">
+                                <span>Low</span>
+                            </label>
+
+                            <label class="radio-btn">
+                                <input type="radio" name="priority" value="medium">
+                                <span>Medium</span>
+                            </label>
+
+                            <label class="radio-btn">
+                                <input type="radio" name="priority" value="high">
+                                <span>High</span>
+                            </label>
+                        </div>
+
+                        <button type="submit">Add TO DO</button>
+                    </form>
+                </div>
             </div>
         </section>
         

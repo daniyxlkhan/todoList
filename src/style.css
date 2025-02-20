@@ -1,3 +1,10 @@
+:root {
+    --title-bar-color: #e34431;
+    --task-color: #eeeeee;
+    --side-bar-color: #eeeeee;
+    --white: #f7f7f7;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +12,7 @@
 
 /* --------------------------------- SELECTORS --------------------------------- */
 body {
+    font-family: Arial, "sans-serif";
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +41,7 @@ ul {
     grid-column: 1 / -1;
     display: flex;
     align-items: center;
-    background: pink;
+    background: var(--title-bar-color);
     font-size: 36px;
 }
 
@@ -43,7 +51,7 @@ ul {
     grid-row: 2 / 4;
     width: 100%;
     height: 100%;
-    background: beige;
+    background: var(--side-bar-color);
 }
 
 .nav-item {
@@ -74,13 +82,43 @@ ul {
     width: 60px;
 }
 
-/* --------------------------------- MAIN SCREEN --------------------------------- */
+/* --------------------------------- CONTENT --------------------------------- */
 .content {
     grid-column: 2 / 3;
     grid-row: 2 / 4;
+    display: flex;
+    justify-content: flex-start;
+    padding: 40px;
     width: 100%;
     height: 100%;
-    background: blanchedalmond;
+    box-sizing: border-box;
+    background: var(--white);
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    background: var(--task-color);
+}
+
+.task-check {
+    display: flex;
+    gap: 15px;
+}
+
+.task-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-details {
+
 }
 
 /* --------------------------------- DIALOG --------------------------------- */
