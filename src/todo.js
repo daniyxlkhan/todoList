@@ -2,7 +2,7 @@ const Projects = []
 
 const content = document.querySelector(".content");
 const todoSubmitForm = document.querySelector("#todo-submit-form");
-const homePage = document.querySelector(".home")
+
 function todo(title, description, dueDate, priority) {
     return {
         title,
@@ -17,10 +17,6 @@ function createTodo(title, description, dueDate, priority) {
     Projects.push(todo);
 }
 
-homePage.addEventListener("click", () => {
-    
-})
-
 todoSubmitForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -33,6 +29,25 @@ todoSubmitForm.addEventListener("submit", (event) => {
     console.log(todo);
     return todo(title, description, dueDate, priority);
 })
+
+function displayTodos(todoArray) {
+    todoArray.forEach(todo => {
+        createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority);
+    });
+}
+
+function createTodoDOM(title, description, dueDate, priority) {
+    const task = document.createElement("div");
+    task.classList.add("task");
+    const taskCheck = document.createElement("div");
+    taskCheck.classList.add("task-check");
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    const title = document.createElement("span");
+    title.classList.add("title");
+    
+}
 
 
 
