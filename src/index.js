@@ -1,37 +1,35 @@
 import styles from "./style.css"
 import { openDialog, closeDialog } from "./showDialogForm";
+import {displayTodos, formEventListener, todo} from "./todo";
+
+const todo1 = todo("real", "read", "15-20-2002", "low");
 
 openDialog();
 closeDialog();
 
+function tabSwtich() {
+    const home = [];
+    const today = [];
+    const week = [];
 
-const Projects = []
+    home.push(todo1);
 
-const todoSubmitForm = document.querySelector("#todo-submit-form");
+    const updateStorage = formEventListener();
 
-function todo(title, description, dueDate, priority) {
-    return {
-        title,
-        description,
-        dueDate,
-        priority
-    };
+    document.querySelector(".home").addEventListener("click", () => {
+        displayTodos(home);
+        updateStorage(home);
+    });
+
+    document.querySelector(".today").addEventListener("click", () => {
+        displayTodos(today);
+        updateStorage(today);
+    });
+
+    document.querySelector(".week").addEventListener("click", () => {
+        displayTodos(week);
+        updateStorage(week);
+    });
 }
 
-function createTodo(title, description, dueDate, priority) {
-    const todoItem = todo(title, description, dueDate, priority);
-    console.log(todoItem);
-    Projects.push(todo);
-}
-
-todoSubmitForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const title = document.querySelector("#title").value;
-    const description = document.querySelector("#details").value;
-    const dueDate = document.querySelector("#date").value;
-    const priority = document.querySelector(`input[name="priority"]:checked`)?.value;
-
-    createTodo(title, description, dueDate, priority);
-});
-
+tabSwtich();

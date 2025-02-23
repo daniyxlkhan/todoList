@@ -1,4 +1,4 @@
-// when the user makes a todo item from the + button and submits it
+// too show and close the dialog which pops up when user hits the + button on the sidebar
 
 const showButton = document.querySelector(".new-todo");
 const dialog = document.querySelector("dialog");
