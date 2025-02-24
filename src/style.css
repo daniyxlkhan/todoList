@@ -82,10 +82,26 @@ ul {
     width: 60px;
 }
 
-.home, .today, .week {
+.home, .today, .week, .project-item {
     cursor: pointer;
 }
 
+.project-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.projects {
+    padding-left: 20px;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 /* --------------------------------- CONTENT --------------------------------- */
 .content {
     grid-column: 2 / 3;
@@ -130,6 +146,8 @@ ul {
 
 /* --------------------------------- DIALOG --------------------------------- */
 .form-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
     width: 800px;
     height: 400px;
     position: fixed;
@@ -149,4 +167,35 @@ ul {
     background: pink;
     font-size: 36px;
     justify-content: space-between;
+}
+
+.form-sidebar {
+    padding-top: 20px;
+    background: var(--side-bar-color);
+}
+
+.dialog-content {
+    padding: 20px;
+}
+
+.make-todo {
+    display: flex;
+}
+
+.dialog-content #title {
+    border: transparent;
+    width: 60%;
+}
+
+.dialog-content #details {
+    border: transparent;
+    width: 90%;
+}
+
+.submit-todo-button {
+    align-self: flex-end;
+}
+
+.submit-todo, .submit-project, .submit-note {
+    cursor: pointer;
 }

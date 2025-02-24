@@ -27,14 +27,12 @@
                     <div class="week-count count">0</div>
                 </li>
 
-                <li class="nav-item">
-                    <span class="nav-item-project-title">Projects</span>
+                <li class="nav-item project-section">
+                    <div class="nav-item-project-title">Projects</div>
                     <ul class="projects">
                         <li class="project-item">
-                            <span class="project"></span>
-                        </li>
-                        <li class="project-item">
-                            
+                            <span class="project-title">Yo</span>
+                            <div class="week-count count">0</div>
                         </li>
                     </ul>
                 </li>
@@ -62,32 +60,6 @@
                     <img src="./assets/delete-icon.svg" width="30" height="30">
                 </div>
             </div>
-
-            <div class="task">
-                <div class="task-check">
-                    <input type="checkbox">
-                    <span class="title">Test</span>
-                </div>
-
-                <div class="task-options">
-                    <button class="task-details-button">Details</button>
-                    <span class="task-date">Dec 11th</span>
-                    <img src="./assets/delete-icon.svg" width="30" height="30">
-                </div>
-            </div>
-
-            <div class="task">
-                <div class="task-check">
-                    <input type="checkbox">
-                    <span class="title">Test</span>
-                </div>
-
-                <div class="task-options">
-                    <button class="task-details-button">Details</button>
-                    <span class="task-date">Dec 11th</span>
-                    <img src="./assets/delete-icon.svg" width="30" height="30">
-                </div>
-            </div>
         </div>
     </section>
 
@@ -100,19 +72,19 @@
             <nav class="form-sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <span class="project-name">To Do</span>
+                        <span class="project-name submit-todo">To Do</span>
                     </li>
     
                     <li class="nav-item">
-                        <span class="project-name">Project</span>
+                        <span class="project-name submit-project">Project</span>
                     </li>
     
                     <li class="nav-item">
-                        <span class="project-name">Note</span>
+                        <span class="project-name submit-note">Note</span>
                     </li>
                 </ul>
             </nav>
-            <div class="content">
+            <div class="dialog-content">
                 <div class="make-todo">
                     <form id="todo-submit-form">
                         <label for="title">
@@ -143,12 +115,22 @@
                             </label>
                         </div>
 
-                        <button type="submit">Add TO DO</button>
+                        <button type="submit" class="submit-todo-button">Add TO DO</button>
                     </form>
-                </div>
+                </div> 
+
+                <div class="make-project">
+                    <form id="project-submit-form">
+                        <label for="title">
+                            <input name="title" placeholder="Title: Gym, work etc" id="project-title">
+                        </label>
+
+                        <button type="submit" class="submit-project-button">Create Project</button>
+                    </form> 
+                </div>  
+
             </div>
         </section>
-        
-      </dialog>
+    </dialog>
 </body>
 </html>

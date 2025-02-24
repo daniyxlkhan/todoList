@@ -1,9 +1,9 @@
 import trashIcon from "./assets/delete-icon.svg";
-
-const Projects = []
+import { Projects, createProject } from "./project";
 
 const content = document.querySelector(".content");
 const todoSubmitForm = document.querySelector("#todo-submit-form");
+const projectSubmitForm = document.querySelector("#project-submit-form");
 
 function todo(title, description, dueDate, priority) {
     return {
@@ -14,14 +14,18 @@ function todo(title, description, dueDate, priority) {
     };
 }
 
-function createTodo(title, description, dueDate, priority, storageArray) {
+function createTodo(title, description, dueDate, priority, currentProject) {
     const tempTodo = todo(title, description, dueDate, priority);
-    storageArray.push(tempTodo);
-    displayTodos(storageArray);
+    Projects[currentProject].push(tempTodo);
+    if (currentProject === "home") {
+        showAllProjectTodos();
+    } else {
+        displayTodos(currentProject);
+    }
 }
 
-function formEventListener() {
-    let currentStorage = [];
+function todoFormEventListener() {
+    let currentProject;
 
     todoSubmitForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -31,17 +35,33 @@ function formEventListener() {
         const dueDate = document.querySelector("#date").value;
         const priority = document.querySelector(`input[name="priority"]:checked`)?.value;
 
-        createTodo(title, description, dueDate, priority, currentStorage);
+        createTodo(title, description, dueDate, priority, currentProject);
     })
 
-    return (newStorage) => {
-        currentStorage = newStorage;
+    return (newProject) => {
+        currentProject = newProject;
     };
 }
 
-function displayTodos(todoArray) {
+projectSubmitForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const projectTitle = document.querySelector("#project-title").value;
+    createProject(projectTitle);
+})
+
+function showAllProjectTodos() {
     content.innerHTML = "";
-    todoArray.forEach(todo => {
+    for (let project in Projects) {
+        Projects[project].forEach(todo => {
+            createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority);
+        })
+    }
+}
+
+function displayTodos(project) {
+    content.innerHTML = "";
+    Projects[project].forEach(todo => {
         createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority);
     });
 }
@@ -85,7 +105,7 @@ function createTodoDOM(title, description, dueDate, priority) {
     content.append(task);
 }
 
-export {displayTodos, formEventListener, todo};
+export {displayTodos, todoFormEventListener, todo, showAllProjectTodos};
 
 
 
