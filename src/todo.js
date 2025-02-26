@@ -5,6 +5,15 @@ const content = document.querySelector(".content");
 const todoSubmitForm = document.querySelector("#todo-submit-form");
 const projectSubmitForm = document.querySelector("#project-submit-form");
 
+let currentProject = "home"; // Default project
+
+// Keeping track of what project is currently selected
+document.querySelector(".nav").addEventListener("click", (event) => { 
+    if (event.target.classList.contains("project")) { 
+        currentProject = event.target.textContent.trim(); 
+    }
+});
+
 function todo(title, description, dueDate, priority) {
     return {
         title,
@@ -14,35 +23,30 @@ function todo(title, description, dueDate, priority) {
     };
 }
 
-function createTodo(title, description, dueDate, priority, currentProject) {
+// Creates a todo task and stores it in the current selected project, also updates the content with the newly added todo
+function createTodo(title, description, dueDate, priority) {
     const tempTodo = todo(title, description, dueDate, priority);
     Projects[currentProject].push(tempTodo);
-    if (currentProject === "home") {
+    if (currentProject === "Home") {
         showAllProjectTodos();
     } else {
         displayTodos(currentProject);
     }
 }
 
-function todoFormEventListener() {
-    let currentProject;
+// When a user creates a todo task
+todoSubmitForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-    todoSubmitForm.addEventListener("submit", (event) => {
-        event.preventDefault();
+    const title = document.querySelector("#title").value;
+    const description = document.querySelector("#details").value;
+    const dueDate = document.querySelector("#date").value;
+    const priority = document.querySelector(`input[name="priority"]:checked`)?.value;
 
-        const title = document.querySelector("#title").value;
-        const description = document.querySelector("#details").value;
-        const dueDate = document.querySelector("#date").value;
-        const priority = document.querySelector(`input[name="priority"]:checked`)?.value;
+    createTodo(title, description, dueDate, priority);
+})
 
-        createTodo(title, description, dueDate, priority, currentProject);
-    })
-
-    return (newProject) => {
-        currentProject = newProject;
-    };
-}
-
+// When a user creates a new project
 projectSubmitForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -50,6 +54,7 @@ projectSubmitForm.addEventListener("submit", (event) => {
     createProject(projectTitle);
 })
 
+// Displays all the todo tasks in every project
 function showAllProjectTodos() {
     content.innerHTML = "";
     for (let project in Projects) {
@@ -59,14 +64,16 @@ function showAllProjectTodos() {
     }
 }
 
-function displayTodos(project) {
+// Display all the todo tasks in a project
+function displayTodos(project) { 
     content.innerHTML = "";
     Projects[project].forEach(todo => {
         createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority);
     });
 }
 
-function createTodoDOM(title, description, dueDate, priority) {
+// Creates a todo task on the DOM
+function createTodoDOM(title, description, dueDate, priority) { 
     const task = document.createElement("div");
     task.classList.add("task");
 
@@ -105,7 +112,7 @@ function createTodoDOM(title, description, dueDate, priority) {
     content.append(task);
 }
 
-export {displayTodos, todoFormEventListener, todo, showAllProjectTodos};
+export {displayTodos, todo, showAllProjectTodos};
 
 
 
