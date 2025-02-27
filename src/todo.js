@@ -15,6 +15,7 @@ document.querySelector(".nav").addEventListener("click", (event) => {
     }
 });
 
+// Creates a todo object
 function todo(title, description, dueDate, priority, id) {
     return {
         title,
@@ -25,6 +26,7 @@ function todo(title, description, dueDate, priority, id) {
     };
 }
 
+// Generates a unique todo ID
 const generateTodoId = (function () {
     let id = 12; // Private variable
     return function () {
@@ -43,6 +45,7 @@ function createTodo(title, description, dueDate, priority) {
     }
 }
 
+// Removes a todo from a project given the todo's ID
 function removeTodo(id) {
     Object.keys(Projects).forEach(projectKey => {
         Projects[projectKey] = Projects[projectKey].filter(todo => todo.id !== id);

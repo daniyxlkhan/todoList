@@ -17,11 +17,13 @@ const Projects = {
     ],
 };
 
+// Creates a project inside the Projects array and adds it the DOM
 function createProject(title) {
     Projects[title] = []; 
     addProjectToDOM(title);
 }
 
+// Displays all the dynamically added projects on the DOM
 function addProjectToDOM(title) {
     const projectsList = document.querySelector(".projects");
 
@@ -42,6 +44,7 @@ function addProjectToDOM(title) {
     projectsList.appendChild(projectItem); 
 }
 
+// When the user switches between projects, this displays the content of each project
 function projectSwitch() {
     document.querySelector(".nav").addEventListener("click", (event) => {
         // when user clicks anything inside nav it "navItem" becomes the closet item either be a dynamically added project-item or hard coded nav-item
@@ -60,7 +63,7 @@ function projectSwitch() {
     });
 }
 
-
+// Just creates some dynamic projects as dummy data
 function createDummyDataForProjects() {
     createProject("Gym");
     const tempTodo1 = todo("bench press", "275 lbs", "12-04-2025", "low", 7);

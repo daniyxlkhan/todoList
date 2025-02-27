@@ -13,6 +13,16 @@
     padding: 0;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--title-bar-color);
+    border-radius: 10px;
+}
+
 /* --------------------------------- SELECTORS --------------------------------- */
 body {
     display: flex;
@@ -37,6 +47,7 @@ ul {
     width: 1320px;
     height: 720px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    background: var(--white);
 }
 
 /* --------------------------------- HEADER --------------------------------- */
@@ -85,11 +96,13 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black;
-    color: white;
+    background: var(--title-bar-color);
+    color: black;
     border-radius: 50px;
-    height: 20px;
-    width: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    height: 27px;
+    width: 27px;
 }
 
 .new-todo {
@@ -113,7 +126,7 @@ ul {
 .project-section {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .projects {
@@ -123,9 +136,22 @@ ul {
 .project-item {
     display: flex;
     justify-content: space-between;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
+
+.nav-item:not(.project-section):hover,
+.project-item:hover,
+.selected .project-name {
+    font-weight: bold;
+    transform: scale(1.05);
+    color: var(--title-bar-color);
+}
+
+.selected {
+    transform: scale(1.05);
+}
+
 /* --------------------------------- CONTENT --------------------------------- */
 .content {
     grid-column: 2 / 3;
@@ -133,13 +159,15 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 20px;
-    padding: 40px;
+    gap: 14px;
+    margin: auto;
+    padding: 0px 45px 0px 45px;
     width: 100%;
-    height: 100%;
+    height: 85%;
     box-sizing: border-box;
     background: var(--white);
-    overflow: auto;
+    scrollbar-gutter: stable;
+    overflow-y: auto;
 }
 
 .task {

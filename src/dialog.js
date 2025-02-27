@@ -1,5 +1,6 @@
 const dialogContent = document.querySelector(".dialog-content");
 
+// Displays the form for user to submit projects, todos and notes when "+" button is clicked
 function dialogPopUp() {
     const showButton = document.querySelector(".new-todo");
     const dialog = document.querySelector("dialog");
