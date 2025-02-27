@@ -44,7 +44,8 @@ function addProjectToDOM(title) {
 
 function projectSwitch() {
     document.querySelector(".nav").addEventListener("click", (event) => {
-        let navItem = event.target.closest(".project-item") || event.target.closest(".nav-item"); // either a project item or a nav item
+        // when user clicks anything inside nav it "navItem" becomes the closet item either be a dynamically added project-item or hard coded nav-item
+        let navItem = event.target.closest(".project-item") || event.target.closest(".nav-item");
         const projectTitleElement = navItem.querySelector(".project-name");
         if(!projectTitleElement) {
             return;
