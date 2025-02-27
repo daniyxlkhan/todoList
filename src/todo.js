@@ -137,6 +137,16 @@ function createTodoDOM(title, description, dueDate, priority, id) {
     task.append(taskCheck);
     task.append(taskOptions);
 
+    const priorityClasses = {
+        low: "low-priority",
+        medium: "medium-priority",
+        high: "high-priority"
+    };
+    
+    if (priorityClasses[priority]) {
+        task.classList.add(priorityClasses[priority]);
+    }
+
     content.append(task);
 }
 

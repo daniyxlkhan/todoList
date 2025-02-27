@@ -3,16 +3,16 @@ import { displayTodos, showAllProjectTodos } from "./todo";
 
 const Projects = {
     Home: [
-        todo("go home", "just go home", "15-20-2002", "low", 0),
+        todo("read a book", "just go home", "15-20-2002", "low", 0),
     ],
     Today: [
-        todo("brush teeth", "with sensodyne", "15-20-2002", "low", 1),
-        todo("pack for school", "read", "15-20-2002", "low", 2),
+        todo("brush teeth", "with sensodyne", "15-20-2002", "medium", 1),
+        todo("pack for school", "read", "15-20-2002", "medium", 2),
         todo("go for a walk", "read", "15-20-2002", "low", 3),
-        todo("feed Bruce", "read", "15-20-2002", "low", 4),
+        todo("feed Bruce", "read", "15-20-2002", "high", 4),
     ],
     Week: [
-        todo("check mailbox", "read", "15-20-2002", "low", 5),
+        todo("check mailbox", "read", "15-20-2002", "medium", 5),
         todo("learn react", "read", "15-20-2002", "low", 6),
     ],
 };
@@ -66,14 +66,14 @@ function projectSwitch() {
 // Just creates some dynamic projects as dummy data
 function createDummyDataForProjects() {
     createProject("Gym");
-    const tempTodo1 = todo("bench press", "275 lbs", "12-04-2025", "low", 7);
+    const tempTodo1 = todo("bench press", "275 lbs", "12-04-2025", "medium", 7);
     const tempTodo2 = todo("squat", "300 lbs", "12-04-2025", "low", 8);
     Projects["Gym"].push(tempTodo1);
     Projects["Gym"].push(tempTodo2);
 
     createProject("Study");
     const tempTodo3 = todo("learn how to write cursive", "cursive writing websites", "12-04-2025", "low", 9);
-    const tempTodo4 = todo("do homework", "on my ipad", "12-04-2025", "low", 10);
+    const tempTodo4 = todo("do homework", "on my ipad", "12-04-2025", "high", 10);
     const tempTodo5 = todo("talk to teammates about group project", "discord vc", "12-04-2025", "low", 11);
     Projects["Study"].push(tempTodo3);
     Projects["Study"].push(tempTodo4);
