@@ -40,21 +40,25 @@ function addProjectToDOM(title) {
     projectItem.appendChild(projectTitle);
     projectItem.appendChild(weekCount);
     projectsList.appendChild(projectItem); 
-}   
+}
 
 function projectSwitch() {
-    document.querySelector(".nav").addEventListener("click", (event) => {    
-        if (event.target.closest(".project-name")) {
-            const projectTitle = event.target.textContent.trim();
-            console.log(projectTitle);
-            if (projectTitle === "Home") {
-                showAllProjectTodos();
-            } else {
-                displayTodos(projectTitle);
-            }
+    document.querySelector(".nav").addEventListener("click", (event) => {
+        let navItem = event.target.closest(".project-item") || event.target.closest(".nav-item"); // either a project item or a nav item
+        const projectTitleElement = navItem.querySelector(".project-name");
+        if(!projectTitleElement) {
+            return;
+        }
+
+        const projectTitle = projectTitleElement.textContent.trim();
+        if (projectTitle === "Home") {
+            showAllProjectTodos();
+        } else {
+            displayTodos(projectTitle);
         }
     });
 }
+
 
 function createDummyDataForProjects() {
     createProject("Gym");

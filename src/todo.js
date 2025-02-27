@@ -11,6 +11,7 @@ let currentProject = "Home"; // Default project
 document.querySelector(".nav").addEventListener("click", (event) => {
     if (event.target.classList.contains("project")) {
         currentProject = event.target.textContent.trim();
+        console.log(currentProject);
     }
 });
 
@@ -25,15 +26,15 @@ function todo(title, description, dueDate, priority, id) {
 }
 
 const generateTodoId = (function () {
-    let id = 0; // Private variable
+    let id = 12; // Private variable
     return function () {
         return id++;
     };
 })();
 
 // Creates a todo task and stores it in the current selected project, also updates the content with the newly added todo
-function createTodo(title, description, dueDate, priority, id) {
-    const tempTodo = todo(title, description, dueDate, priority, id);
+function createTodo(title, description, dueDate, priority) {
+    const tempTodo = todo(title, description, dueDate, priority, generateTodoId());
     Projects[currentProject].push(tempTodo);
     if (currentProject === "Home") {
         showAllProjectTodos();

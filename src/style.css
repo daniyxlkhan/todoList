@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Sigmar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Sigmar&display=swap');
+
 :root {
     --title-bar-color: #e34431;
     --task-color: #eeeeee;
@@ -12,11 +15,11 @@
 
 /* --------------------------------- SELECTORS --------------------------------- */
 body {
-    font-family: Arial, "sans-serif";
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: "Lato", sans-serif;
 }
 
 ul {
@@ -28,12 +31,12 @@ ul {
     grid-template-columns: 2fr 6fr;
     grid-template-rows: 1fr 9fr;
     column-gap: 1px;
-    background: black;
 }
 
 .container {
     width: 1320px;
     height: 720px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* --------------------------------- HEADER --------------------------------- */
@@ -41,8 +44,20 @@ ul {
     grid-column: 1 / -1;
     display: flex;
     align-items: center;
+    gap: 20px;
     background: var(--title-bar-color);
-    font-size: 36px;
+}
+
+.header-title {
+    font-family: "Sigmar", sans-serif;
+    font-size: 46px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.header-todo-icon {
+    width: 60px;
+    height: 60px;
 }
 
 /* --------------------------------- SIDEBAR --------------------------------- */
@@ -55,12 +70,15 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 30px;
+    box-sizing: border-box;
 }
 
 .nav-item {
     display: flex;
     justify-content: space-between;
-    padding: 5px 20px 5px 20px;
+    padding: 15px 20px 5px 20px;
+    font-size: 22px;
 }
 
 .count {
@@ -85,6 +103,7 @@ ul {
     width: 4rem;
     cursor: pointer;
     font-size: 4rem;
+    margin: 10px;
 }
 
 .home, .today, .week, .project-item {
@@ -132,6 +151,7 @@ ul {
     height: 50px;
     box-sizing: border-box;
     background: var(--task-color);
+    font-size: 18px;
 }
 
 .task-check {
