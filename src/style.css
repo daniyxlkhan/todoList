@@ -6,6 +6,7 @@
     --task-color: #eeeeee;
     --side-bar-color: #eeeeee;
     --white: #f7f7f7;
+    --detail-button-color: #44a291;
 }
 
 * {
@@ -217,7 +218,16 @@ ul {
 }
 
 .task-details-button {
+    padding: 3px 10px 3px 10px;
+    border-radius: 4px;
+    color: var(--detail-button-color);
+    border: var(--detail-button-color) 1px solid;
+    transition: background 0.3s ease, color 0.3s ease;
+}
 
+.task-details-button:hover {
+    color: var(--white);
+    background: var(--detail-button-color);
 }
 
 .delete-task:hover {
