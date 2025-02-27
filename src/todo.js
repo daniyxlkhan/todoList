@@ -5,28 +5,47 @@ const content = document.querySelector(".content");
 const todoSubmitForm = document.querySelector("#todo-submit-form");
 const projectSubmitForm = document.querySelector("#project-submit-form");
 
-let currentProject = "home"; // Default project
+let currentProject = "Home"; // Default project
 
 // Keeping track of what project is currently selected
-document.querySelector(".nav").addEventListener("click", (event) => { 
-    if (event.target.classList.contains("project")) { 
-        currentProject = event.target.textContent.trim(); 
+document.querySelector(".nav").addEventListener("click", (event) => {
+    if (event.target.classList.contains("project")) {
+        currentProject = event.target.textContent.trim();
     }
 });
 
-function todo(title, description, dueDate, priority) {
+function todo(title, description, dueDate, priority, id) {
     return {
         title,
         description,
         dueDate,
-        priority
+        priority,
+        id
     };
 }
 
+const generateTodoId = (function () {
+    let id = 0; // Private variable
+    return function () {
+        return id++;
+    };
+})();
+
 // Creates a todo task and stores it in the current selected project, also updates the content with the newly added todo
-function createTodo(title, description, dueDate, priority) {
-    const tempTodo = todo(title, description, dueDate, priority);
+function createTodo(title, description, dueDate, priority, id) {
+    const tempTodo = todo(title, description, dueDate, priority, id);
     Projects[currentProject].push(tempTodo);
+    if (currentProject === "Home") {
+        showAllProjectTodos();
+    } else {
+        displayTodos(currentProject);
+    }
+}
+
+function removeTodo(id) {
+    Object.keys(Projects).forEach(projectKey => {
+        Projects[projectKey] = Projects[projectKey].filter(todo => todo.id !== id);
+    })
     if (currentProject === "Home") {
         showAllProjectTodos();
     } else {
@@ -59,21 +78,21 @@ function showAllProjectTodos() {
     content.innerHTML = "";
     for (let project in Projects) {
         Projects[project].forEach(todo => {
-            createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority);
+            createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority, todo.id);
         })
     }
 }
 
 // Display all the todo tasks in a project
-function displayTodos(project) { 
+function displayTodos(project) {
     content.innerHTML = "";
     Projects[project].forEach(todo => {
-        createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority);
+        createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority, todo.id);
     });
 }
 
 // Creates a todo task on the DOM
-function createTodoDOM(title, description, dueDate, priority) { 
+function createTodoDOM(title, description, dueDate, priority, id) {
     const task = document.createElement("div");
     task.classList.add("task");
 
@@ -99,8 +118,13 @@ function createTodoDOM(title, description, dueDate, priority) {
 
     let img = document.createElement("img");
     img.src = trashIcon;
-    img.setAttribute("width", "30");
-    img.setAttribute("height", "30");
+    img.setAttribute("width", "28");
+    img.setAttribute("height", "28");
+    img.classList.add("delete-task");
+
+    img.addEventListener("click", () => {
+        removeTodo(id);
+    })
 
     taskOptions.append(taskDetailsButton)
     taskOptions.append(taskDate)

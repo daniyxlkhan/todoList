@@ -20,7 +20,7 @@ function dialogPopUp() {
     closeDialog();    
 }
 
-function dialogTabSwtich() {
+function dialogTabSwitch() {
     const makeTodo = document.querySelector(".make-todo");
     const makeProject = document.querySelector(".make-project");
     makeTodo.style.display = "block";
@@ -37,4 +37,4 @@ function dialogTabSwtich() {
     })
 }
 
-export {dialogTabSwtich, dialogPopUp};
+export {dialogTabSwitch, dialogPopUp};

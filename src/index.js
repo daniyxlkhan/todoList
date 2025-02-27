@@ -1,10 +1,10 @@
 import styles from "./style.css"
 import { showAllProjectTodos } from "./todo";
-import { dialogTabSwtich, dialogPopUp } from "./dialog";
+import { dialogTabSwitch, dialogPopUp } from "./dialog";
 import { projectSwitch } from "./project";
 
 dialogPopUp();
-dialogTabSwtich();
+dialogTabSwitch();
 
 showAllProjectTodos();
 projectSwitch();
