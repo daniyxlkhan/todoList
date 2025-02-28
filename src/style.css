@@ -171,6 +171,12 @@ ul {
     transform: scale(1.05);
 }
 
+.nav-item:not(.project-section):hover,
+.project-item:hover,
+.dialog-nav-item:hover {
+    cursor: pointer;
+}
+
 /* --------------------------------- CONTENT --------------------------------- */
 .content {
     grid-column: 2 / 3;
@@ -215,7 +221,7 @@ ul {
 .task-options {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .task-details-button {
@@ -224,9 +230,11 @@ ul {
     color: var(--detail-button-color);
     border: var(--detail-button-color) 1px solid;
     transition: background 0.3s ease, color 0.3s ease;
+    margin-right: 10px;
 }
 
 .task-details-button:hover {
+    cursor: pointer;
     color: var(--white);
     background: var(--detail-button-color);
 }
@@ -235,6 +243,12 @@ ul {
     cursor: pointer;
     transform: scale(1.1);
     transition: transform 0.2s ease-in-out;
+}
+
+.task-date {
+    font-size: 11px;
+    width: 50px;
+    color: #8C3200;
 }
 
 .low-priority {
@@ -298,6 +312,34 @@ dialog::backdrop {
     background: var(--side-bar-color);
 }
 
+.submit-project-button {
+    padding: 7px 15px 7px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    color: var(--detail-button-color);
+    border: var(--detail-button-color) 1px solid;
+    transition: background 0.3s ease, color 0.3s ease;
+    background-color: white;
+    align-self: flex-start;
+}
+
+.submit-project-button:hover {
+    cursor: pointer;
+    color: var(--white);
+    background-color: var(--detail-button-color);
+}
+
+#project-title {
+    border: transparent;
+}
+
+#project-submit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .dialog-content {
     padding: 20px;
 }
@@ -316,6 +358,13 @@ dialog::backdrop {
     width: 90%;
 }
 
+.dialog-content #project-title {
+    width: 400px;
+    font-size: 23px;
+    outline: none;
+    border: transparent;
+}
+
 .submit-todo-button {
     align-self: flex-end;
 }
@@ -326,10 +375,4 @@ dialog::backdrop {
 
 .make-project {
     height: 100%;
-}
-
-#project-submit-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }

@@ -1,5 +1,10 @@
 import trashIcon from "./assets/delete-icon.svg";
 import { Projects, createProject } from "./project";
+import { parseISO, format } from "date-fns";
+
+const formatDateString = (dateString) => {
+    return format(parseISO(dateString), "LLL do");
+};
 
 const content = document.querySelector(".content");
 const todoSubmitForm = document.querySelector("#todo-submit-form");
@@ -15,7 +20,7 @@ document.querySelector(".nav").addEventListener("click", (event) => {
     }
 });
 
-// Creates a todo object
+// Creates a todo objects
 function todo(title, description, dueDate, priority, id) {
     return {
         title,
@@ -36,7 +41,7 @@ const generateTodoId = (function () {
 
 // Creates a todo task and stores it in the current selected project, also updates the content with the newly added todo
 function createTodo(title, description, dueDate, priority) {
-    const tempTodo = todo(title, description, dueDate, priority, generateTodoId());
+    const tempTodo = todo(title, description, formatDateString(dueDate), priority, generateTodoId());
     Projects[currentProject].push(tempTodo);
     if (currentProject === "Home") {
         showAllProjectTodos();
