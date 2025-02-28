@@ -15,7 +15,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
     height: 8px;
 }
 
@@ -105,7 +105,8 @@ ul {
 .nav-item, .dialog-nav-item {
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px 5px 20px;
+    padding: 15px 20px 0px 20px;
+    margin-bottom: 10px;
     font-size: 22px;
 }
 
@@ -116,7 +117,7 @@ ul {
     background: var(--title-bar-color);
     color: black;
     border-radius: 50px;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
     height: 27px;
     width: 27px;
@@ -148,13 +149,20 @@ ul {
 
 .projects {
     padding-left: 20px;
+    padding-right: 30px;
+    width: 100%;
+    max-height: 200px;
+    scrollbar-gutter: stable;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .project-item {
     display: flex;
     justify-content: space-between;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    font-size: 22px;
 }
 
 .nav-item:not(.project-section):hover,

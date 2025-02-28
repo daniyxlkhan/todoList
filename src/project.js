@@ -35,25 +35,33 @@ function addProjectToDOM(title) {
     projectTitle.classList.add("project");
     projectTitle.textContent = title;
 
-    const weekCount = document.createElement("div");
-    weekCount.classList.add("week-count", "count");
-    weekCount.textContent = "0";
+    const count = document.createElement("div");
+    count.classList.add(`${title}-count`, "count");
+    count.textContent = "0";
 
     projectItem.appendChild(projectTitle);
-    projectItem.appendChild(weekCount);
+    projectItem.appendChild(count);
     projectsList.appendChild(projectItem); 
 }
 
 // When the user switches between projects, this displays the content of each project
 function projectSwitch() {
     document.querySelector(".nav").addEventListener("click", (event) => {
-        // when user clicks anything inside nav it "navItem" becomes the closet item either be a dynamically added project-item or hard coded nav-item
+        // when user clicks anything inside nav it looks for the closet item either be a dynamically added project-item or hard coded nav-item
         let navItem = event.target.closest(".project-item") || event.target.closest(".nav-item");
+        if (!navItem) {
+            return;
+        }
+
+        if(navItem.classList.contains("project-section")) { 
+            return;
+        }
+
         const projectTitleElement = navItem.querySelector(".project-name");
         if(!projectTitleElement) {
             return;
         }
-
+        
         const projectTitle = projectTitleElement.textContent.trim();
         if (projectTitle === "Home") {
             showAllProjectTodos();

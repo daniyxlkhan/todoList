@@ -3,7 +3,7 @@ import { Projects, createProject } from "./project";
 import { parseISO, format } from "date-fns";
 
 const formatDateString = (dateString) => {
-    return format(parseISO(dateString), "LLL do");
+    return format(parseISO(dateString), "LLL do"); // Month date (Dec 1st etc)
 };
 
 const content = document.querySelector(".content");
@@ -14,9 +14,15 @@ let currentProject = "Home"; // Default project
 
 // Keeping track of what project is currently selected
 document.querySelector(".nav").addEventListener("click", (event) => {
-    if (event.target.classList.contains("project")) {
-        currentProject = event.target.textContent.trim();
-        console.log(currentProject);
+    const navItem = event.target.closest(".nav-item, .project-item");
+
+    // Exclude .project-section
+    if (!navItem || navItem.classList.contains("project-section")) return;
+
+    const projectTitleElement = navItem.querySelector(".project-name");
+    if (projectTitleElement) {
+        currentProject = projectTitleElement.textContent.trim();
+        console.log("Current Project:", currentProject);
     }
 });
 
@@ -62,6 +68,20 @@ function removeTodo(id) {
     }
 }
 
+function updateTodoCount(project) {
+    const count = document.querySelector(`.${project}-count`);
+
+    if (project === "Home") {
+        let sum = 0;
+        Object.keys(Projects).forEach(proj => {
+            sum += Projects[proj].length; 
+        });
+        count.textContent = sum;
+    } else {
+        count.textContent = Projects[project].length;
+    }
+}
+
 // When a user creates a todo task
 todoSubmitForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -71,6 +91,7 @@ todoSubmitForm.addEventListener("submit", (event) => {
     const dueDate = document.querySelector("#date").value;
     const priority = document.querySelector(`input[name="priority"]:checked`)?.value;
 
+    updateTodoCount(currentProject);
     createTodo(title, description, dueDate, priority);
 })
 
@@ -88,6 +109,7 @@ function showAllProjectTodos() {
     for (let project in Projects) {
         Projects[project].forEach(todo => {
             createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority, todo.id);
+            updateTodoCount(currentProject);
         })
     }
 }
@@ -97,6 +119,7 @@ function displayTodos(project) {
     content.innerHTML = "";
     Projects[project].forEach(todo => {
         createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority, todo.id);
+        updateTodoCount(currentProject);
     });
 }
 
