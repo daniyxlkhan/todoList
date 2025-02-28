@@ -24,7 +24,6 @@
     border-radius: 10px;
 }
 
-/* --------------------------------- SELECTORS --------------------------------- */
 body {
     display: flex;
     justify-content: center;
@@ -37,6 +36,7 @@ ul {
     list-style: none;
 }
 
+/* --------------------------------- MAIN CONTAINERS --------------------------------- */
 .container, .form-container {
     display: grid;
     grid-template-columns: 2fr 6fr;
@@ -88,7 +88,6 @@ ul {
     animation: fadeSlideIn 0.8s ease-out;
 }
 
-
 /* --------------------------------- SIDEBAR --------------------------------- */
 .sidebar {
     grid-column: 1 / 2;
@@ -103,7 +102,7 @@ ul {
     box-sizing: border-box;
 }
 
-.nav-item {
+.nav-item, .dialog-nav-item {
     display: flex;
     justify-content: space-between;
     padding: 15px 20px 5px 20px;
@@ -160,7 +159,9 @@ ul {
 
 .nav-item:not(.project-section):hover,
 .project-item:hover,
-.selected .project-name {
+.dialog-nav-item:hover,
+.selected .project-name,
+.selected {
     font-weight: bold;
     transform: scale(1.05);
     color: var(--title-bar-color);
@@ -321,4 +322,14 @@ dialog::backdrop {
 
 .submit-todo, .submit-project, .submit-note {
     cursor: pointer;
+}
+
+.make-project {
+    height: 100%;
+}
+
+#project-submit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

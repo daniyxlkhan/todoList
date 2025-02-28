@@ -24,16 +24,21 @@ function dialogPopUp() {
 function dialogTabSwitch() {
     const makeTodo = document.querySelector(".make-todo");
     const makeProject = document.querySelector(".make-project");
+
+    // style when user opens up the dialog
+    const dialogNavItem = document.querySelector(".dialog-nav-item");
+    dialogNavItem.classList.add("selected");
+
     makeTodo.style.display = "block";
     makeProject.style.display = "none";
 
-    document.querySelector(".submit-todo").addEventListener("click", () => {
-        makeTodo.style.display = "block";
+    document.querySelector(".dialog-todo").addEventListener("click", () => {
+        makeTodo.style.display = "flex";
         makeProject.style.display = "none";
     })
 
-    document.querySelector(".submit-project").addEventListener("click", () => {
-        makeProject.style.display = "block";
+    document.querySelector(".dialog-project").addEventListener("click", () => {
+        makeProject.style.display = "flex";
         makeTodo.style.display = "none";
     })
 }

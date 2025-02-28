@@ -1,4 +1,4 @@
-export function selectedProjectStyle() {
+function selectedProjectStyleForNavItems() {
     const navItems = document.querySelectorAll(".nav-item, .project-item");
 
     navItems.forEach((element) => {
@@ -14,3 +14,17 @@ export function selectedProjectStyle() {
         });
     });
 }
+
+function selectedTabForDialog() {
+    const dialogItems = document.querySelectorAll(".dialog-nav-item");
+
+    dialogItems.forEach((element) => {
+        element.addEventListener("click", () => {
+            document.querySelectorAll(".dialog-nav-item").forEach(el => el.classList.remove("selected"));
+
+            element.classList.add("selected");
+        });
+    });
+}
+
+export { selectedProjectStyleForNavItems, selectedTabForDialog};
