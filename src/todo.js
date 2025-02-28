@@ -68,18 +68,22 @@ function removeTodo(id) {
     }
 }
 
-function updateTodoCount(project) {
-    const count = document.querySelector(`.${project}-count`);
-
+function getTodoCount(project) {
     if (project === "Home") {
         let sum = 0;
         Object.keys(Projects).forEach(proj => {
             sum += Projects[proj].length; 
         });
-        count.textContent = sum;
-    } else {
-        count.textContent = Projects[project].length;
+        return sum;
     }
+    return Projects[project].length;
+}
+
+function updateAllTodoCounts() {
+    Object.keys(Projects).forEach(project => {
+        const count = document.querySelector(`.${project}-count`);
+        count.textContent = getTodoCount(project);
+    })
 }
 
 // When a user creates a todo task
@@ -91,7 +95,7 @@ todoSubmitForm.addEventListener("submit", (event) => {
     const dueDate = document.querySelector("#date").value;
     const priority = document.querySelector(`input[name="priority"]:checked`)?.value;
 
-    updateTodoCount(currentProject);
+    updateAllTodoCounts()
     createTodo(title, description, dueDate, priority);
 })
 
@@ -109,7 +113,7 @@ function showAllProjectTodos() {
     for (let project in Projects) {
         Projects[project].forEach(todo => {
             createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority, todo.id);
-            updateTodoCount(currentProject);
+            updateAllTodoCounts()
         })
     }
 }
@@ -119,7 +123,7 @@ function displayTodos(project) {
     content.innerHTML = "";
     Projects[project].forEach(todo => {
         createTodoDOM(todo.title, todo.description, todo.dueDate, todo.priority, todo.id);
-        updateTodoCount(currentProject);
+        updateAllTodoCounts()
     });
 }
 
@@ -178,7 +182,7 @@ function createTodoDOM(title, description, dueDate, priority, id) {
     content.append(task);
 }
 
-export {displayTodos, todo, showAllProjectTodos};
+export {displayTodos, todo, showAllProjectTodos, updateAllTodoCounts };
 
 
 
