@@ -1,6 +1,7 @@
 import trashIcon from "./assets/delete-icon.svg";
 import { Projects, createProject } from "./project";
 import { parseISO, format } from "date-fns";
+import { updateLocalStorage } from "./localStorage";
 
 const formatDateString = (dateString) => {
     return format(parseISO(dateString), "LLL do"); // Month date (Dec 1st etc)
@@ -49,6 +50,7 @@ const generateTodoId = (function () {
 function createTodo(title, description, dueDate, priority) {
     const tempTodo = todo(title, description, formatDateString(dueDate), priority, generateTodoId());
     Projects[currentProject].push(tempTodo);
+    updateLocalStorage();
     if (currentProject === "Home") {
         showAllProjectTodos();
     } else {
@@ -61,6 +63,7 @@ function removeTodo(id) {
     Object.keys(Projects).forEach(projectKey => {
         Projects[projectKey] = Projects[projectKey].filter(todo => todo.id !== id);
     })
+    updateLocalStorage();
     if (currentProject === "Home") {
         showAllProjectTodos();
     } else {
@@ -82,9 +85,14 @@ function getTodoCount(project) {
 function updateAllTodoCounts() {
     Object.keys(Projects).forEach(project => {
         const count = document.querySelector(`.${project}-count`);
-        count.textContent = getTodoCount(project);
-    })
+        if (count) {
+            count.textContent = getTodoCount(project);
+        } else {
+            console.warn(`Element .${project}-count not found!`);
+        }
+    });
 }
+
 
 // When a user creates a todo task
 todoSubmitForm.addEventListener("submit", (event) => {

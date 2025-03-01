@@ -1,16 +1,20 @@
 import styles from "./style.css"
 import { showAllProjectTodos, updateAllTodoCounts } from "./todo";
 import { dialogTabSwitch, dialogPopUp } from "./dialog";
-import { projectSwitch } from "./project";
+import { projectSwitch, createDummyData } from "./project";
 import { selectedProjectStyleForNavItems, selectedTabForDialog} from "./styling";
+import { retrieveFromLocalStorage } from "./localStorage.js"
 
-selectedProjectStyleForNavItems();
-selectedTabForDialog();
-updateAllTodoCounts();
+function initializeApp() {
+    retrieveFromLocalStorage();
+    createDummyData();
+    selectedProjectStyleForNavItems();
+    selectedTabForDialog();
+    updateAllTodoCounts();
+    dialogPopUp();
+    dialogTabSwitch();
+    showAllProjectTodos();
+    projectSwitch();
+}
 
-dialogPopUp();
-dialogTabSwitch();
-
-showAllProjectTodos();
-projectSwitch();
-
+initializeApp();
