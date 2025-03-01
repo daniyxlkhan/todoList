@@ -247,6 +247,11 @@ ul {
     background: var(--detail-button-color);
 }
 
+.delete-task {
+    width: 28px;
+    height: 28px;
+}
+
 .delete-task:hover {
     cursor: pointer;
     transform: scale(1.1);
@@ -353,34 +358,71 @@ dialog::backdrop {
 }
 
 .make-todo {
+    height: 100%;
+}
+
+#todo-submit-form {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.title-details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.priority-wrapper-button {
+    display: flex;
+    justify-content: space-between;
 }
 
 .dialog-content #title {
-    border: transparent;
-    width: 60%;
+    width: 400px;
+    font-size: 23px;
 }
 
 .dialog-content #details {
-    border: transparent;
-    width: 90%;
+    margin-top: 20px;
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    white-space: normal; 
+    resize: none;
 }
 
 .dialog-content #project-title {
     width: 400px;
     font-size: 23px;
-    outline: none;
-    border: transparent;
 }
 
-.submit-todo-button {
-    align-self: flex-end;
+.make-project {
+    height: 100%;
 }
 
 .submit-todo, .submit-project, .submit-note {
     cursor: pointer;
 }
 
-.make-project {
-    height: 100%;
+.dialog-content #title, .dialog-content #details, .dialog-content #project-title {
+    outline: none;
+    border: transparent;
+}
+
+.submit-todo-button {
+    padding: 3px 10px 3px 10px;
+    border-radius: 4px;
+    color: var(--detail-button-color);
+    border: var(--detail-button-color) 1px solid;
+    transition: background 0.3s ease, color 0.3s ease;
+    margin-right: 10px;
+}
+
+.submit-todo-button:hover {
+    cursor: pointer;
+    color: var(--white);
+    background: var(--detail-button-color);
 }

@@ -66,6 +66,7 @@ function removeTodo(id) {
     } else {
         displayTodos(currentProject);
     }
+    updateAllTodoCounts()
 }
 
 function getTodoCount(project) {
@@ -154,8 +155,6 @@ function createTodoDOM(title, description, dueDate, priority, id) {
 
     let img = document.createElement("img");
     img.src = trashIcon;
-    img.setAttribute("width", "28");
-    img.setAttribute("height", "28");
     img.classList.add("delete-task");
 
     img.addEventListener("click", () => {
