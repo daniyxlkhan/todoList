@@ -1,26 +1,22 @@
 import { todo } from "./todo"
 import { displayTodos, showAllProjectTodos } from "./todo";
+import {retrieveFromLocalStorage, updateLocalStorage} from "./localStorage";
 
 const Projects = {
-    Home: [
-        todo("read a book", "just go home", "Dec 12th", "low", 0),
-    ],
-    Today: [
-        todo("brush teeth", "with sensodyne", "Mar 12th", "medium", 1),
-        todo("pack for school", "read", "Mar 12th", "medium", 2),
-        todo("go for a walk", "read", "Mar 12th", "low", 3),
-        todo("feed Bruce", "read", "Mar 12th", "high", 4),
-    ],
-    Week: [
-        todo("check mailbox", "read", "Jan 30th", "medium", 5),
-        todo("learn react", "read", "Oct 1st", "low", 6),
-    ],
+    Home: [],
+    Today: [],
+    Week: []
 };
+
+function projectsIsEmpty() {
+    return Object.keys(Projects).every(project => Projects[project].length === 0);
+}
 
 // Creates a project inside the Projects array and adds it the DOM
 function createProject(title) {
     Projects[title] = []; 
     addProjectToDOM(title);
+    updateLocalStorage();
 }
 
 // Displays all the dynamically added projects on the DOM
@@ -72,22 +68,31 @@ function projectSwitch() {
 }
 
 // Just creates some dynamic projects as dummy data
-function createDummyDataForProjects() {
-    createProject("Gym");
-    const tempTodo1 = todo("bench press", "275 lbs", "Jun 12th", "medium", 7);
-    const tempTodo2 = todo("squat", "300 lbs", "Jul 1st", "low", 8);
-    Projects["Gym"].push(tempTodo1);
-    Projects["Gym"].push(tempTodo2);
+function createDummyData() {
+    if (projectsIsEmpty()) {
+        Projects["Home"].push(todo("read a book", "just go home", "Dec 12th", "low", 0));
+        Projects["Today"].push(todo("brush teeth", "with sensodyne", "Mar 12th", "medium", 1));
+        Projects["Today"].push(todo("pack for school", "read", "Mar 12th", "medium", 2));
+        Projects["Today"].push(todo("go for a walk", "read", "Mar 12th", "low", 3));
+        Projects["Today"].push(todo("feed Bruce", "read", "Mar 12th", "high", 4));
+        Projects["Week"].push( todo("learn react", "read", "Oct 1st", "low", 6));
+        Projects["Week"].push(todo("check mailbox", "read", "Jan 30th", "medium", 5));
 
-    createProject("Study");
-    const tempTodo3 = todo("learn how to write cursive", "cursive writing websites", "Oct 9th", "low", 9);
-    const tempTodo4 = todo("do homework", "on my ipad", "Dec 31st", "high", 10);
-    const tempTodo5 = todo("talk to teammates about group project", "discord vc", "Feb 10th", "low", 11);
-    Projects["Study"].push(tempTodo3);
-    Projects["Study"].push(tempTodo4);
-    Projects["Study"].push(tempTodo5);
+        createProject("Gym");
+        const tempTodo1 = todo("bench press", "275 lbs", "Jun 12th", "medium", 7);
+        const tempTodo2 = todo("squat", "300 lbs", "Jul 1st", "low", 8);
+        Projects["Gym"].push(tempTodo1);
+        Projects["Gym"].push(tempTodo2);
+
+        createProject("Work");
+        const tempTodo3 = todo("learn how to write cursive", "cursive writing websites", "Oct 9th", "low", 9);
+        const tempTodo4 = todo("do homework", "on my ipad", "Dec 31st", "high", 10);
+        const tempTodo5 = todo("talk to teammates about group project", "discord vc", "Feb 10th", "low", 11);
+        Projects["Work"].push(tempTodo3);
+        Projects["Work"].push(tempTodo4);
+        Projects["Work"].push(tempTodo5);
+        updateLocalStorage();
+    }
 }
 
-createDummyDataForProjects();
-
-export { Projects, createProject, projectSwitch};
+export { Projects, createProject, projectSwitch, addProjectToDOM, createDummyData };
