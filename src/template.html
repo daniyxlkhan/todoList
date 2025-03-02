@@ -1,54 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
-</head>
-<body>
+  </head>
+  <body>
     <section class="container">
-        <header class="header">
-            <span class="header-title">TO-DO</span>
-            <img src="assets/todo-done.svg" class="header-todo-icon">
-        </header>
-        <nav class="sidebar">
-            <ul class="nav">
-                <li class="nav-item home">
-                    <span class="project-name project">Home</span>
-                    <div class="Home-count count">0</div>
-                </li>
+      <header class="header">
+        <span class="header-title">TO-DO</span>
+        <img src="assets/todo-done.svg" class="header-todo-icon" />
+      </header>
+      <nav class="sidebar">
+        <ul class="nav">
+          <li class="nav-item home">
+            <span class="project-name project">Home</span>
+            <div class="Home-count count">0</div>
+          </li>
 
-                <li class="nav-item today">
-                    <span class="project-name project">Today</span>
-                    <div class="Today-count count">0</div>
-                </li>
+          <li class="nav-item today">
+            <span class="project-name project">Today</span>
+            <div class="Today-count count">0</div>
+          </li>
 
-                <li class="nav-item week">
-                    <span class="project-name project">Week</span>
-                    <div class="Week-count count">0</div>
-                </li>
+          <li class="nav-item week">
+            <span class="project-name project">Week</span>
+            <div class="Week-count count">0</div>
+          </li>
 
-                <li class="nav-item project-section">
-                    <div class="nav-item-project-title">Projects</div>
-                    <ul class="projects">
-                        <!-- <li class="project-item">
+          <li class="nav-item project-section">
+            <div class="nav-item-project-title">Projects</div>
+            <ul class="projects">
+              <!-- <li class="project-item">
                             <span class="project-name project">Yo</span>
                             <div class="week-count count">0</div>
                         </li> -->
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <span class="today">Notes</span>
-                </li>
             </ul>
+          </li>
 
+          <li class="nav-item">
+            <span class="today">Notes</span>
+          </li>
+        </ul>
 
-            <button class="new-todo">+</button>
-        </nav>
-        <div class="content">
-            <div class="task">
-                <!-- <div class="task-check">
+        <button class="new-todo">+</button>
+      </nav>
+      <div class="content">
+        <div class="task">
+          <!-- <div class="task-check">
                     <input type="checkbox">
                     <span class="title">Test</span>
                 </div>
@@ -58,83 +57,98 @@
                     <span class="task-date">Dec 11th</span>
                     <img src="./assets/delete-icon.svg" width="30" height="30">
                 </div> -->
-            </div>
         </div>
+      </div>
     </section>
 
     <dialog>
-        <section class="form-container">
-            <header class="form-header">
-                <span class="form-header-title">Create a new...</span>
-                <button class="close-button">×</button>
-            </header>
-            <nav class="form-sidebar">
-                <ul class="nav">
-                    <li class="dialog-nav-item dialog-todo">
-                        <span class="form-type submit-todo">To Do</span>
-                    </li>
-    
-                    <li class="dialog-nav-item dialog-project">
-                        <span class="form-type submit-project">Project</span>
-                    </li>
-    
-                    <li class="dialog-nav-item dialog-note">
-                        <span class="form-type submit-note">Note</span>
-                    </li>
-                </ul>
-            </nav>
-            <div class="dialog-content">
-                <div class="make-todo">
-                    <form id="todo-submit-form">
-                        <div class="title-details">
-                            <label for="title">
-                                <input name="title" placeholder="Title: Do groceries" id="title">
-                            </label>
-                            <label for="details">
-                                <textarea name="details" placeholder="Details: eg internet, rent, phone" id="details"></textarea>
-                            </label>
-                        </div>
+      <section class="form-container">
+        <header class="form-header">
+          <span class="form-header-title">Create a new...</span>
+          <button class="close-button">×</button>
+        </header>
+        <nav class="form-sidebar">
+          <ul class="nav">
+            <li class="dialog-nav-item dialog-todo">
+              <span class="form-type submit-todo">To Do</span>
+            </li>
 
-                        <label for="date">
-                            <span>Date: </span><input type="date" id="date">
-                        </label>
+            <li class="dialog-nav-item dialog-project">
+              <span class="form-type submit-project">Project</span>
+            </li>
 
-                        <div class="priority-wrapper-button">
-                            <div class="priority">
-                                <span>Priority:</span>
-                                <label class="radio-btn">
-                                    <input type="radio" name="priority" value="low">
-                                    <span>Low</span>
-                                </label>
-    
-                                <label class="radio-btn">
-                                    <input type="radio" name="priority" value="medium">
-                                    <span>Medium</span>
-                                </label>
-    
-                                <label class="radio-btn">
-                                    <input type="radio" name="priority" value="high">
-                                    <span>High</span>
-                                </label>
-                            </div>
+            <li class="dialog-nav-item dialog-note">
+              <span class="form-type submit-note">Note</span>
+            </li>
+          </ul>
+        </nav>
+        <div class="dialog-content">
+          <div class="make-todo">
+            <form id="todo-submit-form">
+              <div class="title-details">
+                <label for="title">
+                  <input
+                    name="title"
+                    placeholder="Title: Do groceries"
+                    id="title"
+                  />
+                </label>
+                <label for="details">
+                  <textarea
+                    name="details"
+                    placeholder="Details: eg internet, rent, phone"
+                    id="details"
+                  ></textarea>
+                </label>
+              </div>
 
-                            <button type="submit" class="submit-todo-button">Add TO DO</button>
-                        </div>
-                    </form>
-                </div> 
+              <label for="date">
+                <span>Date: </span><input type="date" id="date" />
+              </label>
 
-                <div class="make-project">
-                    <form id="project-submit-form">
-                        <label for="title">
-                            <input name="title" placeholder="Title: Gym, work etc" id="project-title">
-                        </label>
+              <div class="priority-wrapper-button">
+                <div class="priority">
+                  <span>Priority:</span>
+                  <label class="radio-btn">
+                    <input type="radio" name="priority" value="low" />
+                    <span>Low</span>
+                  </label>
 
-                        <button type="submit" class="submit-project-button">Create Project</button>
-                    </form> 
-                </div>  
+                  <label class="radio-btn">
+                    <input type="radio" name="priority" value="medium" />
+                    <span>Medium</span>
+                  </label>
 
-            </div>
-        </section>
+                  <label class="radio-btn">
+                    <input type="radio" name="priority" value="high" />
+                    <span>High</span>
+                  </label>
+                </div>
+
+                <button type="submit" class="submit-todo-button">
+                  Add TO DO
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="make-project">
+            <form id="project-submit-form">
+              <label for="title">
+                <input
+                  name="title"
+                  placeholder="Title: Gym, work etc"
+                  id="project-title"
+                />
+              </label>
+
+              <button type="submit" class="submit-project-button">
+                Create Project
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
     </dialog>
-</body>
+  </body>
 </html>
