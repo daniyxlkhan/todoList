@@ -1,6 +1,6 @@
 import { todo } from "./todo"
 import { displayTodos, showAllProjectTodos } from "./todo";
-import {retrieveFromLocalStorage, updateLocalStorage} from "./localStorage";
+import { updateLocalStorage, localStorageIsEmpty } from "./localStorage";
 
 const Projects = {
     Home: [],
@@ -69,7 +69,7 @@ function projectSwitch() {
 
 // Just creates some dynamic projects as dummy data
 function createDummyData() {
-    if (projectsIsEmpty()) {
+    if (localStorageIsEmpty()) {
         Projects["Home"].push(todo("read a book", "just go home", "Dec 12th", "low", 0));
         Projects["Today"].push(todo("brush teeth", "with sensodyne", "Mar 12th", "medium", 1));
         Projects["Today"].push(todo("pack for school", "read", "Mar 12th", "medium", 2));
@@ -95,4 +95,4 @@ function createDummyData() {
     }
 }
 
-export { Projects, createProject, projectSwitch, addProjectToDOM, createDummyData };
+export { Projects, createProject, projectSwitch, addProjectToDOM, createDummyData, projectsIsEmpty };

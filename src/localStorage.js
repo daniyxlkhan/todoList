@@ -1,5 +1,5 @@
 import {Projects} from "./project";
-import { addProjectToDOM } from "./project";
+import { addProjectToDOM, projectsIsEmpty } from "./project";
 
 function retrieveFromLocalStorage() {
     const storedProjects = JSON.parse(localStorage.getItem("Projects"));
@@ -22,4 +22,13 @@ function updateLocalStorage() {
     localStorage.setItem("Projects", projectString);
 }
 
-export { retrieveFromLocalStorage, updateLocalStorage };
+function localStorageIsEmpty() {
+    const temp = JSON.parse(localStorage.getItem("Projects"));
+    if (temp) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+export { retrieveFromLocalStorage, updateLocalStorage, localStorageIsEmpty };
