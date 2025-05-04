@@ -28,13 +28,14 @@ document.querySelector(".nav").addEventListener("click", (event) => {
 });
 
 // Creates a todo objects
-function todo(title, description, dueDate, priority, id) {
+function todo(title, description, dueDate, priority, id, completed) {
   return {
     title,
     description,
     dueDate,
     priority,
     id,
+    completed
   };
 }
 
@@ -54,6 +55,7 @@ function createTodo(title, description, dueDate, priority) {
     formatDateString(dueDate),
     priority,
     generateTodoId(),
+    false
   );
   Projects[currentProject].push(tempTodo);
   updateLocalStorage();
@@ -115,6 +117,7 @@ todoSubmitForm.addEventListener("submit", (event) => {
 
   updateAllTodoCounts();
   createTodo(title, description, dueDate, priority);
+  todoSubmitForm.reset();
 });
 
 // When a user creates a new project
@@ -123,6 +126,7 @@ projectSubmitForm.addEventListener("submit", (event) => {
 
   const projectTitle = document.querySelector("#project-title").value;
   createProject(projectTitle);
+  projectSubmitForm.reset();
 });
 
 // Displays all the todo tasks in every project
@@ -136,6 +140,7 @@ function showAllProjectTodos() {
         todo.dueDate,
         todo.priority,
         todo.id,
+        todo.completed
       );
       updateAllTodoCounts();
     });
@@ -152,13 +157,14 @@ function displayTodos(project) {
       todo.dueDate,
       todo.priority,
       todo.id,
+      todo.completed
     );
     updateAllTodoCounts();
   });
 }
 
 // Creates a todo task on the DOM
-function createTodoDOM(title, description, dueDate, priority, id) {
+function createTodoDOM(title, description, dueDate, priority, id, completed) {
   const task = document.createElement("div");
   task.classList.add("task");
 
@@ -188,6 +194,25 @@ function createTodoDOM(title, description, dueDate, priority, id) {
 
   img.addEventListener("click", () => {
     removeTodo(id);
+  });
+
+  if (completed) {
+    checkbox.checked = true;
+    taskTitle.classList.add("checked");
+  }
+
+  checkbox.addEventListener("change", () => {
+    taskTitle.classList.toggle("checked", checkbox.checked)
+
+    for (const project in Projects) {
+      const todos = Projects[project];
+      const todo = todos.find((t) => t.id === id);
+      if (todo) {
+        todo.completed = checkbox.checked;
+        updateLocalStorage();
+        break;
+      }
+    }
   });
 
   taskOptions.append(taskDetailsButton);

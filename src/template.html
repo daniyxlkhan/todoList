@@ -87,7 +87,7 @@
             <form id="todo-submit-form">
               <div class="title-details">
                 <label for="title">
-                  <input
+                  <input required
                     name="title"
                     placeholder="Title: Do groceries"
                     id="title"
@@ -103,24 +103,24 @@
               </div>
 
               <label for="date">
-                <span>Date: </span><input type="date" id="date" />
+                <span>Date: </span><input type="date" id="date" required/>
               </label>
 
               <div class="priority-wrapper-button">
                 <div class="priority">
                   <span>Priority:</span>
                   <label class="radio-btn">
-                    <input type="radio" name="priority" value="low" />
+                    <input type="radio" name="priority" value="low" required/>
                     <span>Low</span>
                   </label>
 
                   <label class="radio-btn">
-                    <input type="radio" name="priority" value="medium" />
+                    <input type="radio" name="priority" value="medium" required/>
                     <span>Medium</span>
                   </label>
 
                   <label class="radio-btn">
-                    <input type="radio" name="priority" value="high" />
+                    <input type="radio" name="priority" value="high" required/>
                     <span>High</span>
                   </label>
                 </div>
@@ -135,11 +135,12 @@
           <div class="make-project">
             <form id="project-submit-form">
               <label for="title">
-                <input
+                <input required
                   name="title"
                   placeholder="Title: Gym, work etc"
                   id="project-title"
                 />
+                <span id="error-msg"></span>
               </label>
 
               <button type="submit" class="submit-project-button">

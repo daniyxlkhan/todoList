@@ -16,9 +16,21 @@ function projectsIsEmpty() {
 
 // Creates a project inside the Projects array and adds it the DOM
 function createProject(title) {
-  Projects[title] = [];
-  addProjectToDOM(title);
-  updateLocalStorage();
+  const errorDiv = document.getElementById("error-msg");
+
+  if (!Projects.hasOwnProperty(title)) {
+    Projects[title] = [];
+    addProjectToDOM(title);
+    updateLocalStorage();
+    errorDiv.style.display = "none"; // clear any previous error
+  } else {
+    errorDiv.textContent = `Project "${title}" already exists.`;
+    errorDiv.style.display = "block";
+
+    setTimeout(() => {
+      errorDiv.style.display = "none";
+    }, 3000);
+  }
 }
 
 // Displays all the dynamically added projects on the DOM

@@ -285,6 +285,11 @@ ul {
   border-left: red 3px solid;
 }
 
+.title.checked {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
 /* --------------------------------- DIALOG --------------------------------- */
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.4);
@@ -386,9 +391,15 @@ dialog::backdrop {
   height: 100%;
 }
 
+.priority {
+  display: flex;
+  gap: 10px;
+}
+
 .priority-wrapper-button {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .dialog-content #title {
@@ -442,4 +453,10 @@ dialog::backdrop {
   cursor: pointer;
   color: var(--white);
   background: var(--detail-button-color);
+}
+
+#error-msg {
+  font-size: 14px;
+  color: red;
+  display: none;
 }
