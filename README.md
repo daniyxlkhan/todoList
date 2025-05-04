@@ -2,7 +2,7 @@
 
 A fully functional to-do list manager built using vanilla JavaScript, HTML, and CSS. This app supports project-based task organization, localStorage persistence, dynamic DOM updates, and a responsive UI — all without any frameworks.
 
-![Screenshot](preview.png)
+![Screenshot](./src/assets/preview.png)
 
 ## ✨ Features
 
